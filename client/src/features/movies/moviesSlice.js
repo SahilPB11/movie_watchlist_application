@@ -7,6 +7,7 @@ const initialState = {
   error: null,
 };
 
+
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   const response = await axios.get("/api/movies");
   return response.data;

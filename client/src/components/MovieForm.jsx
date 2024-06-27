@@ -33,47 +33,80 @@ const MovieForm = ({ existingMovie }) => {
     } else {
       dispatch(addMovie(movie));
     }
+    // Optional: Reset form fields after submission
+    setMovie({
+      title: "",
+      description: "",
+      releaseYear: "",
+      genre: "",
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={movie.title}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Description:
-        <textarea
-          name="description"
-          value={movie.description}
-          onChange={handleChange}
-        ></textarea>
-      </label>
-      <label>
-        Release Year:
-        <input
-          type="number"
-          name="releaseYear"
-          value={movie.releaseYear}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Genre:
-        <input
-          type="text"
-          name="genre"
-          value={movie.genre}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Save</button>
+    <form
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto"
+      onSubmit={handleSubmit}
+    >
+      <div className="mb-4">
+        <label className="block text-sm font-bold mb-2 text-gray-800">
+          Title:
+          <input
+            type="text"
+            name="title"
+            value={movie.title}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter title"
+            required
+          />
+        </label>
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-bold mb-2 text-gray-800">
+          Description:
+          <textarea
+            name="description"
+            value={movie.description}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter description"
+          ></textarea>
+        </label>
+      </div>
+      <div className="mb-4">
+        <label className="block text-sm font-bold mb-2 text-gray-800">
+          Release Year:
+          <input
+            type="number"
+            name="releaseYear"
+            value={movie.releaseYear}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter release year"
+          />
+        </label>
+      </div>
+      <div className="mb-6">
+        <label className="block text-sm font-bold mb-2 text-gray-800">
+          Genre:
+          <input
+            type="text"
+            name="genre"
+            value={movie.genre}
+            onChange={handleChange}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter genre"
+          />
+        </label>
+      </div>
+      <div className="flex items-center justify-end">
+        <button
+          type="submit"
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          {existingMovie ? "Update" : "Save"}
+        </button>
+      </div>
     </form>
   );
 };
