@@ -2,7 +2,6 @@
 import express from "express";
 import { config } from "dotenv";
 import bodyParser from "body-parser";
-import { errorMiddleware } from "./middleware/errorMiddleware.js";
 import movieRoutes from "./routes/movieRoutes.js";
 import cors from "cors";
 
@@ -20,9 +19,3 @@ app.use(express.json()); // Parse JSON payloads
 
 // set up routes for movie management
 app.use("/api/movies", movieRoutes);
-
-// Use error handling middleware to manage and respond to errors
-app.use(errorMiddleware);
-
-// Export the configured Express application for use in other modules
-export default app;
